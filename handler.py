@@ -13,10 +13,10 @@ bucket = os.environ.get("BUCKET_NAME", "jon-s3-bucket-for-redshift")
 def handler(event, context):
     year = datetime.now().year
     orders = []
-    for i in range(1, 300_001):
+    for i in range(1, 2000):
         customer_id = random.randint(1, 100_000)
         product_id = random.randint(1, 1000)
-        order_date = faker.date_between(start_date=f'{year}-01-01', end_date=f'{year}-12-31')
+        signup_date = faker.date_between(start_date=date(year, 1, 1), end_date=date(year, 12, 31))
         quantity = random.randint(1, 10)
         unit_price = round(random.uniform(5.0, 1000.0), 2)
         total_price = round(unit_price * quantity, 2)
